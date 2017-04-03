@@ -34,10 +34,10 @@ map.on('load', function () {
                     [4, 1],
                     [5, 7]
             ]},
-          'circle-color': '#F50549',
+          'circle-color': '#ED1447',
           'circle-opacity': 0.45,
           'circle-stroke-width': 2,
-          'circle-stroke-color': '#F5D0DD',
+          'circle-stroke-color': '#FFFFFF',
           'circle-stroke-opacity': 0.35,
         },
       });
@@ -54,29 +54,30 @@ map.on('load', function () {
               'fill-color': {
                     property: 'classify',
                     stops: [
-                      [1, '#D1ABE3'],
-                      [2, '#BC97C9'],
-                      [3, '#A783AF'],
-                      [4, '#917096'],
-                      [5, '#7C5D7E'],
+                      [1, '#FFFD9D'],
+                      [2, '#FFFD9D'],
+                      [3, '#F7D08C'],
+                      [4, '#F7D08C'],
+                      [5, '#ED8282'],
                 ]},
-              'fill-outline-color': '#7C5D7E',
+              'fill-outline-color': '#ED8282',
               'fill-opacity': 0.35,
             },
           },'waterway-label');
 
 
-// var layerList = document.getElementById('menumap');
-// var inputs = layerList.getElementsByTagName('input');
-// function switchLayer(layer) {
-//     var layerId = layer.target.id;
-//     map.setStyle('mapbox://styles/lenaemaya/' + layerId);
-// }
-// for (var i = 0; i < inputs.length; i++) {
-//     inputs[i].onclick = switchLayer;
-// }
 
+var layerList = document.getElementById('menumap');
+var inputs = layerList.getElementsByTagName('input');
 
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('mapbox://styles/lenaemaya/' + layerId);
+}
+
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+}
 
 
 
