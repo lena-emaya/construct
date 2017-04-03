@@ -6,25 +6,7 @@ var map = new mapboxgl.Map({
     center: [37.634,55.742]
 });
 
-map.on('load', function () {
-    map.addSource('stay_point', {
-        type: 'vector',
-        data: './stay_point.geojson'
-    });
-    map.addLayer({
-        'id': 'stay_point',
-        'type': 'circle',
-        'source': 'stay_point',
-        'layout': {
-            'visibility': 'visible'
-        },
-        'paint': {
-            'circle-radius': 8,
-            'circle-color': 'rgba(55,148,179,1)'
-        },
-        'source-layer': 'museum-cusco'
-    });
-});
+
 
 
 var layerList = document.getElementById('menumap');
@@ -41,6 +23,23 @@ for (var i = 0; i < inputs.length; i++) {
 map.addControl(new mapboxgl.NavigationControl());
 
 map.on('load', function () {
+  map.addSource('stray_point', {
+      type: 'point',
+      data: './stray_point.geojson'
+  });
+  map.addLayer({
+      'id': 'stray_point',
+      'type': 'circle',
+      'source': 'stray_point',
+      'source-layer': 'stray_point',
+      'layout': {
+          'visibility': 'visible'
+      },
+      'paint': {
+          'circle-radius': 8,
+          'circle-color': 'rgba(55,148,179,1)'
+      },
+  });
 
 
 toggleLayer(['Dots'], 'Markers');
