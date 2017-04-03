@@ -24,28 +24,28 @@ map.addControl(new mapboxgl.NavigationControl());
 
 map.on('load', function () {
   map.addSource('stray_point', {
-      type: 'point',
+      type: 'geojson',
       data: './stray_point.geojson'
   });
-  map.addLayer({
-      'id': 'stray_point',
-      'type': 'circle',
-      'source': 'stray_point',
-      'source-layer': 'stray_point',
-      'layout': {
-          'visibility': 'visible'
-      },
-      'paint': {
-          'circle-radius': 8,
-          'circle-color': 'rgba(55,148,179,1)'
-      },
-  });
+  // map.addLayer({
+  //     'id': 'stray_point',
+  //     'type': 'circle',
+  //     'source': 'stray_point',
+  //     'source-layer': 'stray_point',
+  //     'layout': {
+  //         'visibility': 'visible'
+  //     },
+  //     'paint': {
+  //         'circle-radius': 8,
+  //         'circle-color': 'rgba(55,148,179,1)'
+  //     },
+  // });
 
 
 toggleLayer(['Dots'], 'Markers');
 toggleLayer(['p_1', 'p_2', 'p_3','p_4'], 'Classified markers');
 toggleLayer(['Cartogram_1', 'Cartogram_2', 'Cartogram_3', 'Cartogram_4'], 'Сhoropleth');
-toggleLayer(['aero_1', 'aero_1_1', 'aero_2', 'aero_2_2','aero_3', 'aero_3_3','aero_4', 'aero_4_4',], 'Сhoropleth1');
+// toggleLayer(['aero_1', 'aero_1_1', 'aero_2', 'aero_2_2','aero_3', 'aero_3_3','aero_4', 'aero_4_4',], 'Сhoropleth1');
 
 function toggleLayer(ids, name) {
     var link = document.createElement('a');
