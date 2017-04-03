@@ -109,7 +109,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibGVuYWVtYXlhIiwiYSI6ImNpa3VhbXE5ZjAwMXB3eG00a
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/lenaemaya/cj0jfr25700j22spbd6ifg5z1',
-    zoom: 9,
+    zoom: 8,
     center: [37.634,55.742]
 });
 
@@ -169,7 +169,7 @@ function toggleLayer(ids, name) {
             } else {
                 this.className = 'active';
                 map.setLayoutProperty(ids[layers], 'visibility', 'visible');
-          
+
             }
          }
 
