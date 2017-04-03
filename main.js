@@ -25,21 +25,17 @@ map.addControl(new mapboxgl.NavigationControl());
 map.on('load', function () {
   map.addSource('stray_point', {
       type: 'geojson',
-      data: './stray_point.geojson'
+      data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/stray_point.geojson'
   });
-  // map.addLayer({
-  //     'id': 'stray_point',
-  //     'type': 'circle',
-  //     'source': 'stray_point',
-  //     'source-layer': 'stray_point',
-  //     'layout': {
-  //         'visibility': 'visible'
-  //     },
-  //     'paint': {
-  //         'circle-radius': 8,
-  //         'circle-color': 'rgba(55,148,179,1)'
-  //     },
-  // });
+  map.addLayer({
+      'id': 'point',
+      'type': 'circle',
+      'source': 'stray_point',
+      'paint': {
+          'circle-radius': 8,
+          'circle-color': 'rgba(55,148,179,1)'
+      },
+  });
 
 
 toggleLayer(['Dots'], 'Markers');
