@@ -6,20 +6,25 @@ var map = new mapboxgl.Map({
     center: [37.634,55.742]
 });
 
-
-
-
-
-
-// var dataList = document.getElementById('zoom');
-// var inputs = dataList.getElementsByTagName('input');
-// function switchZoom() {
-//
-//     map.setZoom('mapbox://styles/lenaemaya/' + layerId);
-// }
-// for (var i = 0; i < inputs.length; i++) {
-//     inputs[i].onclick = switchLayer;
-// }
+map.on('load', function () {
+    map.addSource('stay_point', {
+        type: 'vector',
+        data: './stay_point.geojson'
+    });
+    map.addLayer({
+        'id': 'stay_point',
+        'type': 'circle',
+        'source': 'stay_point',
+        'layout': {
+            'visibility': 'visible'
+        },
+        'paint': {
+            'circle-radius': 8,
+            'circle-color': 'rgba(55,148,179,1)'
+        },
+        'source-layer': 'museum-cusco'
+    });
+});
 
 
 var layerList = document.getElementById('menumap');
