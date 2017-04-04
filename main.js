@@ -23,6 +23,14 @@ map.on('load', function () {
     type: 'geojson',
     data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/stray_polygon.geojson'
   });
+  map.addSource('local_point', {
+    type: 'geojson',
+    data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/local_point.geojson'
+  });
+  map.addSource('world_dot', {
+    type: 'geojson',
+    data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/world_dot.geojson'
+  });
   map.addLayer({
     'id': 'World points',
     'type': 'circle',
@@ -65,6 +73,24 @@ map.on('load', function () {
       'fill-opacity': 0.35
     }
   }, 'waterway-label');
+  map.addLayer({
+    'id': 'World markers',
+    'type': 'symbol',
+    'source': 'world_dot',
+    'layout': {
+      'icon-image': 'map_marker_bookmark_baloon_highlighted',
+      'icon-size': 0.5
+    }
+  });
+  map.addLayer({
+    'id': 'Local points',
+    'type': 'symbol',
+    'source': 'local_point',
+    'layout': {
+      'icon-image': 'map_marker_balloon_highlighted',
+      'icon-size': 0.5
+    }
+  });
 
   // var layerList = document.getElementById('menumap');
   // var inputs = layerList.getElementsByTagName('input');
@@ -79,7 +105,7 @@ map.on('load', function () {
   // }
 
 
-  var toggleableLayerIds = ['World points', 'World choropleth'];
+  var toggleableLayerIds = ['World points', 'World choropleth','World markers', 'Local points'];
 
   for (var k = 0; k < toggleableLayerIds.length; k++) {
     var id = toggleableLayerIds[k];
