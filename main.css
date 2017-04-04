@@ -38,7 +38,7 @@ body {
   background: #fff;
   position: absolute;
   z-index: 3;
-  width: 155px;
+  width: 147px;
   height:45px;
   text-indent: 17px;
   font-family: 'HelveticaNeue-Light';
@@ -54,8 +54,8 @@ body {
   position: absolute;
   z-index: 1;
   top: 60px;
-  height:250px;
-  width: 155px;
+  height:245px;
+  width: 147px;
   text-indent: 20px;
   font-family: 'HelveticaNeue-Light';
   font-size: 14px;
