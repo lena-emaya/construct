@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibGVuYWVtYXlhIiwiYSI6ImNpa3VhbXE5ZjAwMXB3eG00a
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/lenaemaya/cj0jfr25700j22spbd6ifg5z1',
-  zoom: 8,
+  zoom: 2,
   center: [37.634, 55.742]
 });
 
@@ -14,6 +14,7 @@ map.on('load', function () {
     document.getElementById('panelzoom').innerHTML = '<p>Current zoom</p>' + (Number(x).toFixed(1));
   });
 
+
   map.addSource('stray_point', {
     type: 'geojson',
     data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/stray_point.geojson'
@@ -23,7 +24,7 @@ map.on('load', function () {
     data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/stray_polygon.geojson'
   });
   map.addLayer({
-    'id': 'World point',
+    'id': 'World points',
     'type': 'circle',
     'source': 'stray_point',
     'paint': {
@@ -77,7 +78,8 @@ map.on('load', function () {
   //   inputs[i].onclick = switchLayer;
   // }
 
-  var toggleableLayerIds = ['World point', 'World choropleth'];
+
+  var toggleableLayerIds = ['World points', 'World choropleth'];
 
   for (var k = 0; k < toggleableLayerIds.length; k++) {
     var id = toggleableLayerIds[k];
@@ -100,6 +102,7 @@ map.on('load', function () {
       } else {
         this.className = 'active';
         map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+
       }
     };
 
