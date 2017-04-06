@@ -25,7 +25,7 @@ map.on('load', function () {
   });
   map.addSource('local_point', {
     type: 'geojson',
-    data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/local_point.geojson'
+    data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/local_point2.geojson'
   });
   map.addSource('world_dot', {
     type: 'geojson',
@@ -84,7 +84,7 @@ map.on('load', function () {
     'source': 'world_dot',
     'layout': {
       'icon-image': 'map_marker_ship',
-      'icon-size': 0.5
+      'icon-size': 0.6
     }
   });
   map.addLayer({
