@@ -44,19 +44,20 @@ map.on('load', function () {
         property: 'class',
         stops: [
           [1, 2],
-          [2, 6],
-          [3, 12],
-          [4, 1],
-          [5, 7]
+          [2, 3],
+          [3, 9],
+          [4, 5],
+          [5, 4]
         ]
       },
-      'circle-color': '#D10040',
-      'circle-opacity': 0.45,
+      'circle-color': '#BD0026',
+      'circle-opacity': 0.55,
       'circle-stroke-width': 2,
       'circle-stroke-color': '#FFFFFF',
       'circle-stroke-opacity': 0.35
     }
   });
+
   map.addLayer({
     'id': 'World choropleth',
     'type': 'fill',
@@ -66,14 +67,14 @@ map.on('load', function () {
       'fill-color': {
         property: 'classify',
         stops: [
-          [1, '#FFFD9D'],
-          [2, '#FFFD9D'],
-          [3, '#F7D08C'],
-          [4, '#F7D08C'],
-          [5, '#ED8282']
+          [1, '#FEB24C'],
+          [2, '#E31A1C'],
+          [3, '#FD8D3C'],
+          [4, '#BD0026'],
+          [5, '#FFEDA0']
         ]
       },
-      'fill-outline-color': '#ED8282',
+      'fill-outline-color': '#FFEDA0',
       'fill-opacity': 0.35
     }
   }, 'waterway-label');
@@ -104,13 +105,13 @@ map.on('load', function () {
       'fill-color': {
         property: 'class',
         stops: [
-          [1, '#FFFD9D'],
-          [2, '#ED8282'],
-          [3, '#F7D08C']
+          [1, '#FF9898'],
+          [2, '#CF455C'],
+          [3, '#971549']
         ]
       },
       'fill-outline-color': '#ED8282',
-      'fill-opacity': 0.35
+      'fill-opacity': 0.65
     }
   }, 'waterway-label');
 
