@@ -74,8 +74,8 @@ map.on('load', function () {
           [5, '#FFEDA0']
         ]
       },
-      'fill-outline-color': '#FFEDA0',
-      'fill-opacity': 0.35
+      'fill-outline-color': '#FFFFFF',
+      'fill-opacity': 0.25
     }
   }, 'waterway-label');
   map.addLayer({
@@ -83,7 +83,7 @@ map.on('load', function () {
     'type': 'symbol',
     'source': 'world_dot',
     'layout': {
-      'icon-image': 'map_marker_rocket_direction%401x',
+      'icon-image': 'map_marker_ship',
       'icon-size': 0.5
     }
   });
@@ -92,7 +92,7 @@ map.on('load', function () {
     'type': 'symbol',
     'source': 'local_point',
     'layout': {
-      'icon-image': 'map_marker_balloon_highlighted',
+      'icon-image': 'marker_test',
       'icon-size': 0.5
     }
   });
