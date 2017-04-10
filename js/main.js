@@ -99,7 +99,6 @@ map.on('load', function () {
     'id': 'Local points',
     'type': 'symbol',
     'source': 'local_point',
-    'minzoom': 4,
     'layout': {
       'icon-image': 'marker_test',
       'icon-size': 0.45
