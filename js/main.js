@@ -15,6 +15,12 @@ map.on('load', function () {
   });
 
 
+
+
+
+
+
+
   map.addSource('stray_point', {
     type: 'geojson',
     data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/stray_point.geojson'
@@ -38,22 +44,23 @@ map.on('load', function () {
   map.addLayer({
     'id': 'World points',
     'type': 'circle',
+    'maxzoom': 5,
     'source': 'stray_point',
     'paint': {
       'circle-radius': {
         property: 'class',
         stops: [
-          [1, 2],
-          [2, 3],
-          [3, 9],
-          [4, 5],
-          [5, 4]
+          [1, 1],
+          [2, 2],
+          [3, 6],
+          [4, 4],
+          [5, 3]
         ]
       },
-      'circle-color': '#BD0026',
-      'circle-opacity': 0.55,
-      'circle-stroke-width': 2,
-      'circle-stroke-color': '#FFFFFF',
+      'circle-color': '#C2004F',
+      'circle-opacity': 0.45,
+      'circle-stroke-width': 0.1,
+      'circle-stroke-color': '#C2004F',
       'circle-stroke-opacity': 0.35
     }
   });
@@ -61,17 +68,18 @@ map.on('load', function () {
   map.addLayer({
     'id': 'World choropleth',
     'type': 'fill',
+    'maxzoom': 5,
     'source': 'stray_polygon',
     'paint': {
       'fill-antialias': true,
       'fill-color': {
         property: 'classify',
         stops: [
-          [1, '#FEB24C'],
-          [2, '#E31A1C'],
-          [3, '#FD8D3C'],
-          [4, '#BD0026'],
-          [5, '#FFEDA0']
+          [1, '#FF9898'],
+          [2, '#CF455C'],
+          [3, '#971549'],
+          [4, '#FF9898'],
+          [5, '#971549']
         ]
       },
       'fill-outline-color': '#FFFFFF',
@@ -83,23 +91,25 @@ map.on('load', function () {
     'type': 'symbol',
     'source': 'world_dot',
     'layout': {
-      'icon-image': 'map_marker_ship',
-      'icon-size': 0.6
+      'icon-image': 'marker_test',
+      'icon-size': 0.4
     }
   });
   map.addLayer({
     'id': 'Local points',
     'type': 'symbol',
     'source': 'local_point',
+    'minzoom': 4,
     'layout': {
       'icon-image': 'marker_test',
-      'icon-size': 0.5
+      'icon-size': 0.45
     }
   });
   map.addLayer({
     'id': 'Local choropleth',
     'type': 'fill',
     'source': 'local_choropleth',
+    'minzoom': 6,
     'paint': {
       'fill-antialias': true,
       'fill-color': {
@@ -111,7 +121,7 @@ map.on('load', function () {
         ]
       },
       'fill-outline-color': '#ED8282',
-      'fill-opacity': 0.65
+      'fill-opacity': 0.25
     }
   }, 'waterway-label');
 
@@ -126,6 +136,19 @@ map.on('load', function () {
   // for (var i = 0; i < inputs.length; i++) {
   //   inputs[i].onclick = switchLayer;
   // }
+
+
+//   map.on('click', function (e) {
+//
+//     var features1 = map.queryRenderedFeatures(e.point, { layers: ['Local points'] });
+//     console.log(features1);
+//     }
+// );
+
+
+
+
+
 
 
   var toggleableLayerIds = ['World points', 'World markers', 'World choropleth', 'Local points','Local choropleth'];
@@ -148,6 +171,7 @@ map.on('load', function () {
       if (visibility === 'visible') {
         map.setLayoutProperty(clickedLayer, 'visibility', 'none');
         this.className = '';
+
       } else {
         this.className = 'active';
         map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
@@ -160,15 +184,37 @@ map.on('load', function () {
   }
 });
 
-// toggleLayer(['Dots'], 'Markers');
-// toggleLayer(['p_1', 'p_2', 'p_3','p_4'], 'Classified markers');
-// toggleLayer(['Cartogram_1', 'Cartogram_2', 'Cartogram_3', 'Cartogram_4'], 'Сhoropleth');
+
+
+
+
+
+
+
+
+
+// map.on('click', function() {
+//
+//
+//         var bounds = coordinates.reduce(function(bounds, coord) {
+//             return bounds.extend(coord);
+//         }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+//
+//         map.fitBounds(bounds, {
+//             padding: 20
+//         });
+// });
+
+
+// toggleLayer(['World points'], 'World points');
+// toggleLayer(['World markers'], 'World markers');
+// toggleLayer(['World choropleth'], 'World choropleth');
 // // toggleLayer(['aero_1', 'aero_1_1', 'aero_2', 'aero_2_2','aero_3', 'aero_3_3','aero_4', 'aero_4_4',], 'Сhoropleth1');
 //
 // function toggleLayer(ids, name) {
 //     var link = document.createElement('a');
 //     link.href = '#';
-//     // link.className = 'active';
+//     link.className = 'active';
 //     link.textContent = name;
 //
 //     link.onclick = function (e) {
@@ -193,4 +239,5 @@ map.on('load', function () {
 //     var layers = document.getElementById('menu');
 //     layers.appendChild(link);
 // }
-// });
+//
+// ;
