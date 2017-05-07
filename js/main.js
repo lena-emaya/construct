@@ -1,7 +1,7 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoibGVuYWVtYXlhIiwiYSI6ImNpa3VhbXE5ZjAwMXB3eG00ajVyc2J6ZTIifQ.kmZ4yVcNrupl4H8EonM3aQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoieWFjb25zdHJ1Y3QiLCJhIjoiY2l6NDFpN3k1MDAyZjJxbHdhcHU2eHQ0ZyJ9.8TtgxnHPThgkyXRDGGYMlQ';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/lenaemaya/cj0jfr25700j22spbd6ifg5z1',
+  style: 'mapbox://styles/yaconstruct/cj2dvtz8g009h2rqnky4bit27',
   zoom: 2,
   center: [37.634, 55.742]
 });
@@ -57,10 +57,10 @@ map.on('load', function () {
           [5, 3]
         ]
       },
-      'circle-color': '#C2004F',
+      'circle-color': '#403109',
       'circle-opacity': 0.45,
       'circle-stroke-width': 0.1,
-      'circle-stroke-color': '#C2004F',
+      'circle-stroke-color': '#403109',
       'circle-stroke-opacity': 0.35
     }
   });
@@ -75,11 +75,11 @@ map.on('load', function () {
       'fill-color': {
         property: 'classify',
         stops: [
-          [1, '#FF9898'],
-          [2, '#CF455C'],
-          [3, '#971549'],
-          [4, '#FF9898'],
-          [5, '#971549']
+          [1, '#FFC424'],
+          [2, '#FFC424'],
+          [3, '#BF931B'],
+          [4, '#BF931B'],
+          [5, '#7F6212']
         ]
       },
       'fill-outline-color': '#FFFFFF',
