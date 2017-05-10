@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWFjb25zdHJ1Y3QiLCJhIjoiY2l6NDFpN3k1MDAyZjJxb
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/yaconstruct/cj2dvtz8g009h2rqnky4bit27',
-  zoom: 2,
+  zoom: 8,
   center: [37.634, 55.742]
 });
 
@@ -57,13 +57,14 @@ map.on('load', function () {
           [5, 3]
         ]
       },
-      'circle-color': '#403109',
-      'circle-opacity': 0.45,
-      'circle-stroke-width': 0.1,
-      'circle-stroke-color': '#403109',
+      'circle-color': '#424D69',
+      'circle-opacity': 0.75,
+      'circle-stroke-width': 0.9,
+      'circle-stroke-color': '#E1F6F4',
       'circle-stroke-opacity': 0.35
     }
   });
+
 
   map.addLayer({
     'id': 'World choropleth',
@@ -75,35 +76,35 @@ map.on('load', function () {
       'fill-color': {
         property: 'classify',
         stops: [
-          [1, '#FFC424'],
-          [2, '#FFC424'],
-          [3, '#BF931B'],
-          [4, '#BF931B'],
-          [5, '#7F6212']
+          [1, '#F9F8EB'],
+          [2, '#7A9EB1'],
+          [3, '#415865'],
+          [4, '#F9F8EB'],
+          [5, '#7A9EB1']
         ]
       },
       'fill-outline-color': '#FFFFFF',
-      'fill-opacity': 0.25
+      'fill-opacity': 0.35
     }
   }, 'waterway-label');
-  map.addLayer({
-    'id': 'World markers',
-    'type': 'symbol',
-    'source': 'world_dot',
-    'layout': {
-      'icon-image': 'marker_test',
-      'icon-size': 0.4
-    }
-  });
-  map.addLayer({
-    'id': 'Local points',
-    'type': 'symbol',
-    'source': 'local_point',
-    'layout': {
-      'icon-image': 'marker_test',
-      'icon-size': 0.45
-    }
-  });
+  // map.addLayer({
+  //   'id': 'World markers',
+  //   'type': 'symbol',
+  //   'source': 'world_dot',
+  //   'layout': {
+  //     'icon-image': 'marker_test',
+  //     'icon-size': 0.4
+  //   }
+  // });
+  // map.addLayer({
+  //   'id': 'Local points',
+  //   'type': 'symbol',
+  //   'source': 'local_point',
+  //   'layout': {
+  //     'icon-image': 'marker_test',
+  //     'icon-size': 0.45
+  //   }
+  // });
   map.addLayer({
     'id': 'Local choropleth',
     'type': 'fill',
@@ -114,15 +115,35 @@ map.on('load', function () {
       'fill-color': {
         property: 'class',
         stops: [
-          [1, '#FF9898'],
-          [2, '#CF455C'],
-          [3, '#971549']
+          [1, '#7DB9B3'],
+          [2, '#166678'],
+          [3, '#E1F6F4']
         ]
       },
-      'fill-outline-color': '#ED8282',
+      'fill-outline-color': '#E1F6F4',
       'fill-opacity': 0.25
     }
   }, 'waterway-label');
+
+
+  map.addLayer({
+    'id': 'Local points',
+    'type': 'circle',
+    'minzoom': 5,
+    'source': 'local_point',
+    'paint': {
+      'circle-radius': {
+        'stops': [[5, 1], [22, 8]]
+      },
+      'circle-color': '#424D69',
+      'circle-opacity': 1,
+      'circle-stroke-width': {
+        'stops': [[5, 0.1], [22, 3]]
+      },
+      'circle-stroke-color': '#E1F6F4',
+      'circle-stroke-opacity': 0.95
+    }
+  });
 
   // var layerList = document.getElementById('menumap');
   // var inputs = layerList.getElementsByTagName('input');
@@ -150,7 +171,7 @@ map.on('load', function () {
 
 
 
-  var toggleableLayerIds = ['World points', 'World markers', 'World choropleth', 'Local points','Local choropleth'];
+  var toggleableLayerIds = ['World points', 'World choropleth', 'Local points','Local choropleth'];
 
   for (var k = 0; k < toggleableLayerIds.length; k++) {
     var id = toggleableLayerIds[k];
