@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoieWFjb25zdHJ1Y3QiLCJhIjoiY2l6NDFpN3k1MDAyZjJxbHdhcHU2eHQ0ZyJ9.8TtgxnHPThgkyXRDGGYMlQ';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/yaconstruct/cj2dvtz8g009h2rqnky4bit27',
+  style: 'mapbox://styles/yaconstruct/cj2ixmpim00332rmqdgfxj80j',
   zoom: 8,
   center: [37.634, 55.742]
 });
@@ -57,10 +57,10 @@ map.on('load', function () {
           [5, 3]
         ]
       },
-      'circle-color': '#424D69',
-      'circle-opacity': 0.75,
+      'circle-color': '#E00D36',
+      'circle-opacity': 0.85,
       'circle-stroke-width': 0.9,
-      'circle-stroke-color': '#E1F6F4',
+      'circle-stroke-color': '#FFFFFF',
       'circle-stroke-opacity': 0.35
     }
   });
@@ -84,7 +84,7 @@ map.on('load', function () {
         ]
       },
       'fill-outline-color': '#FFFFFF',
-      'fill-opacity': 0.35
+      'fill-opacity': 0.6
     }
   }, 'waterway-label');
   // map.addLayer({
@@ -115,13 +115,13 @@ map.on('load', function () {
       'fill-color': {
         property: 'class',
         stops: [
-          [1, '#7DB9B3'],
-          [2, '#166678'],
-          [3, '#E1F6F4']
+          [1, '#C60C30'],
+          [2, '#FFB630'],
+          [3, '#FE5F1A']
         ]
       },
-      'fill-outline-color': '#E1F6F4',
-      'fill-opacity': 0.25
+      'fill-outline-color': '#940924',
+      'fill-opacity': 0.6
     }
   }, 'waterway-label');
 
@@ -135,13 +135,13 @@ map.on('load', function () {
       'circle-radius': {
         'stops': [[5, 1], [22, 8]]
       },
-      'circle-color': '#424D69',
+      'circle-color': '#E00D36',
       'circle-opacity': 1,
       'circle-stroke-width': {
         'stops': [[5, 0.1], [22, 3]]
       },
-      'circle-stroke-color': '#E1F6F4',
-      'circle-stroke-opacity': 0.95
+      'circle-stroke-color': '#FFFFFF',
+      'circle-stroke-opacity': 0.65
     }
   });
 
