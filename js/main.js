@@ -57,9 +57,9 @@ map.on('load', function () {
           [5, 3]
         ]
       },
-      'circle-color': '#E00D36',
-      'circle-opacity': 0.85,
-      'circle-stroke-width': 0.9,
+      'circle-color': '#FF667F',
+      'circle-opacity': 1,
+      'circle-stroke-width': 0.5,
       'circle-stroke-color': '#FFFFFF',
       'circle-stroke-opacity': 0.35
     }
@@ -115,12 +115,12 @@ map.on('load', function () {
       'fill-color': {
         property: 'class',
         stops: [
-          [1, '#C60C30'],
-          [2, '#FFB630'],
-          [3, '#FE5F1A']
+          [1, '#FF6619'],
+          [2, '#FFD919'],
+          [3, '#FF9919']
         ]
       },
-      'fill-outline-color': '#940924',
+      'fill-outline-color': '#fff',
       'fill-opacity': 0.6
     }
   }, 'waterway-label');
@@ -135,7 +135,7 @@ map.on('load', function () {
       'circle-radius': {
         'stops': [[5, 1], [22, 8]]
       },
-      'circle-color': '#E00D36',
+      'circle-color': '#ff3333',
       'circle-opacity': 1,
       'circle-stroke-width': {
         'stops': [[5, 0.1], [22, 3]]
