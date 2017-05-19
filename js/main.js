@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoieWFjb25zdHJ1Y3QiLCJhIjoiY2l6NDFpN3k1MDAyZjJxbHdhcHU2eHQ0ZyJ9.8TtgxnHPThgkyXRDGGYMlQ';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/yaconstruct/cj2ixmpim00332rmqdgfxj80j',
+  style: 'mapbox://styles/yaconstruct/cj2uf462500042rnvw29we6qg',
   zoom: 8,
   center: [37.634, 55.742]
 });
@@ -41,6 +41,31 @@ map.on('load', function () {
     type: 'geojson',
     data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/local_choropleth.geojson'
   });
+
+
+  map.addLayer({
+    'id': 'World choropleth',
+    'type': 'fill',
+    'maxzoom': 5,
+    'source': 'stray_polygon',
+    'paint': {
+      'fill-antialias': true,
+      'fill-color': {
+        property: 'classify',
+        stops: [
+          [1, '#F9F8EB'],
+          [2, '#7A9EB1'],
+          [3, '#415865'],
+          [4, '#F9F8EB'],
+          [5, '#7A9EB1']
+        ]
+      },
+      'fill-outline-color': '#FFFFFF',
+      'fill-opacity': 0.6
+    }
+  });
+
+
   map.addLayer({
     'id': 'World points',
     'type': 'circle',
@@ -65,28 +90,6 @@ map.on('load', function () {
     }
   });
 
-
-  map.addLayer({
-    'id': 'World choropleth',
-    'type': 'fill',
-    'maxzoom': 5,
-    'source': 'stray_polygon',
-    'paint': {
-      'fill-antialias': true,
-      'fill-color': {
-        property: 'classify',
-        stops: [
-          [1, '#F9F8EB'],
-          [2, '#7A9EB1'],
-          [3, '#415865'],
-          [4, '#F9F8EB'],
-          [5, '#7A9EB1']
-        ]
-      },
-      'fill-outline-color': '#FFFFFF',
-      'fill-opacity': 0.6
-    }
-  }, 'waterway-label');
   // map.addLayer({
   //   'id': 'World markers',
   //   'type': 'symbol',
@@ -123,7 +126,7 @@ map.on('load', function () {
       'fill-outline-color': '#fff',
       'fill-opacity': 0.6
     }
-  }, 'waterway-label');
+  });
 
 
   map.addLayer({
