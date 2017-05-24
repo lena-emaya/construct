@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoianVuZ2ZyYXUiLCJhIjoiY2lxOWVuaHBtMDA1MWhya3EydWhmdWNrNyJ9.tSTlibOho2Mo3qXdUYZVEQ';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/jungfrau/cj2zyeeth000j2sqyq01h7bbc',
+    center: [-100.486052, 37.830348],
+    zoom: 2
+});
+
+map.on('load', function () {
+  map.addSource('gps', {
+    type: 'geojson',
+    data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/new_gps_2.geojson'
+  });
+
+
+    map.addLayer({
+        "id": "gps_1",
+        "type": "line",
+        "source": "gps",
+        "layout": {},
+        "paint": {
+            "line-color": "#627BC1",
+            "line-width": 2
+        }
+    });
+
+    map.addLayer({
+        "id": "gps_1-hover",
+        "type": "line",
+        "source": "gps",
+        "layout": {},
+        "paint": {
+          "line-color": "#fff",
+          "line-width": 2
+        },
+        "filter": ["==", "name", ""]
+    });
+
+    // When the user moves their mouse over the states-fill layer, we'll update the filter in
+    // the state-fills-hover layer to only show the matching state, thus making a hover effect.
+    map.on("mousemove", "state-fills", function(e) {
+        map.setFilter("state-fills-hover", ["==", "name", e.features[0].properties.name]);
+    });
+
+    // Reset the state-fills-hover layer's filter when the mouse leaves the layer.
+    map.on("mouseleave", "state-fills", function() {
+        map.setFilter("state-fills-hover", ["==", "name", ""]);
+    });
+});
+</script>
+
+</body>
+</html>
+Copy example
