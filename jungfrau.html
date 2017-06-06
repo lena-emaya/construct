@@ -18,40 +18,30 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoianVuZ2ZyYXUiLCJhIjoiY2lxOWVuaHBtMDA1MWhya3EydWhmdWNrNyJ9.tSTlibOho2Mo3qXdUYZVEQ';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/jungfrau/cj333urzt000d2sqks3m5n26j',
-    center: [8.001, 46.634],
-    zoom: 8
+    style: 'mapbox://styles/jungfrau/cj2zyeeth000j2sqyq01h7bbc',
+    center: [7.983, 46.670],
+    zoom: 12
 });
 
-map.on('load', function () {
-    map.addSource("states", {
-        "type": "geojson",
-        "data": "https://raw.githubusercontent.com/lena-emaya/construct/master/new_gps_2.geojson"
-    });
-
-    map.addLayer({
-        "id": "m_streets",
-        "type": "line",
-        "source": "states",
-        "interactive": true,
-        "layout": {},
-        "paint": {
-            "line-color": "#627BC1",
-            "line-width": 2.5
-        }
-    });
-
-    map.addLayer({
-        "id": "route-hover",
-        "type": "line",
-        "source": "states",
-        "layout": {},
-        "paint": {
-            "line-color": "#f48024",
-            "line-width": 2.5
-        },
-        "filter": ["==", "name", ""]
-    });
+map.on('style.load', function () {
+    // map.addSource("states", {
+    //     "type": "geojson",
+    //     "data": "https://raw.githubusercontent.com/lena-emaya/construct/master/gps.geojson"
+    // });
+    //
+    //
+    // map.addLayer({
+    //     "id": "route-hover",
+    //     "type": "line",
+    //     "source": "states",
+    //     "layout": {},
+    //     "paint": {
+    //         "line-color": "#FFC445",
+    //         "line-width": 2.5,
+    //         "line-gap-width": 1,
+    //     },
+    //     "filter": ["==", "name", ""]
+    // });
 
     // map.on('mousemove', function(e) {
     //     map.featuresAt(e.point, {
@@ -66,19 +56,76 @@ map.on('load', function () {
     //     });
     // });
 
-    map.on("mousemove", function(e) {
-           var features = map.queryRenderedFeatures(e.point, { layers: ["m_streets"] });
-           if (features.length) {
-               map.setFilter("route-hover", ["==", "name", features[0].properties.name]);
-           } else {
-               map.setFilter("route-hover", ["==", "name", ""]);
-           }
-       });
+    // map.on("mousemove", function(e) {
+    //        var features = map.queryRenderedFeatures(e.point, { layers: ["new_h3_line"] });
+    //        if (features.length) {
+    //            map.setFilter("new_h3_hover", ["==", "name", features[0].properties.name]);
+    //        } else {
+    //            map.setFilter("new_h3_hover", ["==", "name", ""]);
+    //        }
+    //    });
+    //
+    //    // Reset the state-fills-hover layer's filter when the mouse leaves the map
+    //    map.on("mouseout", function() {
+    //        map.setFilter("new_h3_hover", ["==", "name", ""]);
+    //    });
 
-       // Reset the state-fills-hover layer's filter when the mouse leaves the map
-       map.on("mouseout", function() {
-           map.setFilter("route-hover", ["==", "name", ""]);
-       });
+       map.on("mousemove", function(k) {
+              var features = map.queryRenderedFeatures(k.point, { layers: ["hover_2"] });
+              if (features.length) {
+                  map.setFilter("hover_copy", ["==", "name", features[0].properties.name]);
+              } else {
+                  map.setFilter("hover_copy", ["==", "name", ""]);
+              }
+          });
+
+          // Reset the state-fills-hover layer's filter when the mouse leaves the map
+          map.on("mouseout", function() {
+              map.setFilter("hover_copy", ["==", "name", ""]);
+          });
+
+          map.on("mousemove", function(m) {
+                 var features = map.queryRenderedFeatures(m.point, { layers: ["hover_2"] });
+                 if (features.length) {
+                     map.setFilter("hover_copy_1", ["==", "name", features[0].properties.name]);
+                 } else {
+                     map.setFilter("hover_copy_1", ["==", "name", ""]);
+                 }
+             });
+
+             // Reset the state-fills-hover layer's filter when the mouse leaves the map
+             map.on("mouseout", function() {
+                 map.setFilter("hover_copy_1", ["==", "name", ""]);
+             });
+
+             map.on("mousemove", function(d) {
+                    var features = map.queryRenderedFeatures(d.point, { layers: ["point-a copy"] });
+                    if (features.length) {
+                        map.setFilter("point-a", ["==", "name", features[0].properties.name]);
+                    } else {
+                        map.setFilter("point-a", ["==", "name", ""]);
+                    }
+                });
+
+                // Reset the state-fills-hover layer's filter when the mouse leaves the map
+                map.on("mouseout", function() {
+                    map.setFilter("point-a", ["==", "name", ""]);
+                });
+
+                map.on("mousemove", function(d) {
+                       var features = map.queryRenderedFeatures(d.point, { layers: ["point-b-copy"] });
+                       if (features.length) {
+                           map.setFilter("point-b", ["==", "name", features[0].properties.name]);
+                       } else {
+                           map.setFilter("point-b", ["==", "name", ""]);
+                       }
+                   });
+
+                   // Reset the state-fills-hover layer's filter when the mouse leaves the map
+                   map.on("mouseout", function() {
+                       map.setFilter("point-b", ["==", "name", ""]);
+                   });
+
 
 
 });
