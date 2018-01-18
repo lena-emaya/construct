@@ -42,16 +42,21 @@ map.on('load', function () {
     data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/local_choropleth.geojson'
   });
 
+  map.addSource('PTAL', {
+    type: 'geojson',
+    data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/ptal_hex100.geojson'
+  });
+
 
   map.addLayer({
-    'id': 'World choropleth',
+    'id': 'PTAL',
     'type': 'fill',
-    'maxzoom': 5,
-    'source': 'stray_polygon',
+    'minzoom': 10,
+    'source': 'PTAL',
     'paint': {
       'fill-antialias': true,
       'fill-color': {
-        property: 'classify',
+        property: 'ptal_score',
         stops: [
           [1, '#F9F8EB'],
           [2, '#7A9EB1'],
@@ -65,6 +70,27 @@ map.on('load', function () {
     }
   });
 
+  // map.addLayer({
+  //   'id': 'World choropleth',
+  //   'type': 'fill',
+  //   'maxzoom': 5,
+  //   'source': 'stray_polygon',
+  //   'paint': {
+  //     'fill-antialias': true,
+  //     'fill-color': {
+  //       property: 'classify',
+  //       stops: [
+  //         [1, '#F9F8EB'],
+  //         [2, '#7A9EB1'],
+  //         [3, '#415865'],
+  //         [4, '#F9F8EB'],
+  //         [5, '#7A9EB1']
+  //       ]
+  //     },
+  //     'fill-outline-color': '#FFFFFF',
+  //     'fill-opacity': 0.6
+  //   }
+  // });
 
   map.addLayer({
     'id': 'World points',
@@ -174,7 +200,7 @@ map.on('load', function () {
 
 
 
-  var toggleableLayerIds = ['World points', 'World choropleth', 'Local points','Local choropleth'];
+  var toggleableLayerIds = ['World points', 'PTAL', 'Local points','Local choropleth'];
 
   for (var k = 0; k < toggleableLayerIds.length; k++) {
     var id = toggleableLayerIds[k];

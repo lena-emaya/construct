@@ -38,7 +38,7 @@ body {
   background: #fff;
   position: absolute;
   z-index: 3;
-  width: 147px;
+  width: 20vh;
   height:45px;
   text-indent: 17px;
   font-family: 'HelveticaNeue-Light';
@@ -55,7 +55,7 @@ body {
   z-index: 1;
   top: 60px;
   height:245px;
-  width: 147px;
+  width: 20vh;
   text-indent: 20px;
   font-family: 'HelveticaNeue-Light';
   font-size: 14px;
@@ -70,7 +70,7 @@ body {
   z-index: 2;
   top: 100px;
   left: 10px;
-  width: 120px;
+  width: 16vh;
   border: 1px solid #E3E3E3;
   font-family: 'HelveticaNeue-Light';
 }
@@ -111,7 +111,7 @@ body {
   z-index: 1;
   top: 260px;
   left: 10px;
-  width: 120px;
+  width: 16vh;
   border: 1px solid #E3E3E3;
   font-family: 'HelveticaNeue-Light';
 }
