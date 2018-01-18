@@ -1,7 +1,7 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoieWFjb25zdHJ1Y3QiLCJhIjoiY2l6NDFpN3k1MDAyZjJxbHdhcHU2eHQ0ZyJ9.8TtgxnHPThgkyXRDGGYMlQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoibW9zY293Y2l0eW1hcCIsImEiOiJjajc3ZnQ1aGUxem41MzNudXU3MnBnZDA2In0.akDBtVzE-R3FgVs64ObGLg';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/yaconstruct/cj3ldey9x000k2sp7xv3n5pez',
+  style: 'mapbox://styles/moscowcitymap/cjcg6vzz93pez2sobx2br0obs',
   zoom: 8,
   center: [37.634, 55.742]
 });
