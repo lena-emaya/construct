@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibW9zY293Y2l0eW1hcCIsImEiOiJjajc3ZnQ1aGUxem41M
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/moscowcitymap/cjcg6vzz93pez2sobx2br0obs',
-  zoom: 10,
-  center: [37.634, 55.742]
+  zoom: 13,
+  center: [37.560147, 55.745279]
 });
 
 map.addControl(new mapboxgl.NavigationControl());
@@ -68,8 +68,8 @@ map.on('load', function () {
       "line-cap": "round"
     },
     'paint': {
-      "line-color": "#888",
-      "line-width": 8
+      "line-color": "#F52677",
+      "line-width": 1.3
     }
   });
 
