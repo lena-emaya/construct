@@ -2,11 +2,15 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibW9zY293Y2l0eW1hcCIsImEiOiJjajc3ZnQ1aGUxem41M
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/moscowcitymap/cjcg6vzz93pez2sobx2br0obs',
-  zoom: 8,
+  zoom: 10,
   center: [37.634, 55.742]
 });
 
 map.addControl(new mapboxgl.NavigationControl());
+
+
+
+
 
 map.on('load', function () {
   map.on('zoom', function () {
@@ -46,6 +50,29 @@ map.on('load', function () {
     type: 'geojson',
     data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/ptal_hex100.geojson'
   });
+
+  map.addSource('Velo', {
+    type: 'geojson',
+    data: 'https://raw.githubusercontent.com/lena-emaya/construct/master/velo.geojson'
+  });
+
+
+  map.addLayer({
+    'id': 'Cycleways',
+    'type': 'line',
+    'minzoom': 10,
+    'source': 'Velo',
+    'layout': {
+      'visibility': 'none',
+      "line-join": "round",
+      "line-cap": "round"
+    },
+    'paint': {
+      "line-color": "#888",
+      "line-width": 8
+    }
+  });
+
 
 
   map.addLayer({
@@ -97,6 +124,9 @@ map.on('load', function () {
     'type': 'circle',
     'maxzoom': 5,
     'source': 'stray_point',
+    'layout': {
+      'visibility': 'none'
+    },
     'paint': {
       'circle-radius': {
         property: 'class',
@@ -138,6 +168,9 @@ map.on('load', function () {
     'id': 'Local choropleth',
     'type': 'fill',
     'source': 'local_choropleth',
+    'layout': {
+      'visibility': 'none'
+    },
     'minzoom': 6,
     'paint': {
       'fill-antialias': true,
@@ -150,7 +183,7 @@ map.on('load', function () {
         ]
       },
       'fill-outline-color': '#fff',
-      'fill-opacity': 0.6
+      'fill-opacity': 0.4
     }
   });
 
@@ -160,6 +193,9 @@ map.on('load', function () {
     'type': 'circle',
     'minzoom': 5,
     'source': 'local_point',
+    'layout': {
+      'visibility': 'none'
+    },
     'paint': {
       'circle-radius': {
         'stops': [[5, 1], [22, 8]]
@@ -174,40 +210,14 @@ map.on('load', function () {
     }
   });
 
-  // var layerList = document.getElementById('menumap');
-  // var inputs = layerList.getElementsByTagName('input');
-  //
-  // function switchLayer(layer) {
-  //   var layerId = layer.target.id;
-  //   map.setStyle('mapbox://styles/lenaemaya/' + layerId);
-  // }
-  //
-  // for (var i = 0; i < inputs.length; i++) {
-  //   inputs[i].onclick = switchLayer;
-  // }
-
-
-//   map.on('click', function (e) {
-//
-//     var features1 = map.queryRenderedFeatures(e.point, { layers: ['Local points'] });
-//     console.log(features1);
-//     }
-// );
-
-
-
-
-
-
-
-  var toggleableLayerIds = ['World points', 'PTAL', 'Local points','Local choropleth'];
+  var toggleableLayerIds = ['Cycleways', 'PTAL', 'Local points','Local choropleth'];
 
   for (var k = 0; k < toggleableLayerIds.length; k++) {
     var id = toggleableLayerIds[k];
 
     var link = document.createElement('a');
     link.href = '#';
-    link.className = 'active';
+    link.className = 'visible';
     link.textContent = id;
 
     link.onclick = function (e) {
@@ -231,90 +241,26 @@ map.on('load', function () {
     var layers = document.getElementById('menu');
     layers.appendChild(link);
   }
+
+
+
 });
+  // var layerList = document.getElementById('menumap');
+  // var inputs = layerList.getElementsByTagName('input');
+  //
+  // function switchLayer(layer) {
+  //   var layerId = layer.target.id;
+  //   map.setStyle('mapbox://styles/lenaemaya/' + layerId);
+  // }
+  //
+  // for (var i = 0; i < inputs.length; i++) {
+  //   inputs[i].onclick = switchLayer;
+  // }
 
 
-var toggleLayerIds = [ 'Vegetation'];
-
-for (var k = 0; k < toggleLayerIds.length; k++) {
-    var id = toggleLayerIds[k];
-
-    var link = document.createElement('a');
-    link.href = '#';
-    link.className = 'active';
-    link.textContent = id;
-
-    link.onclick = function (e) {
-        var clickLayer = this.textContent;
-        e.preventDefault();
-        e.stopPropagation();
-
-        var visibility = map.getLayoutProperty(clickLayer, 'visibility');
-
-        if (visibility === 'visible') {
-            map.setLayoutProperty(clickLayer, 'visibility', 'none');
-            this.className = '';
-        } else {
-            this.className = 'active';
-            map.setLayoutProperty(clickLayer, 'visibility', 'visible');
-        }
-    };
-
-    var layers1 = document.getElementById('menu1');
-    layers1.appendChild(link);
-}
-
-
-
-
-
-
-
-// map.on('click', function() {
+//   map.on('click', function (e) {
 //
-//
-//         var bounds = coordinates.reduce(function(bounds, coord) {
-//             return bounds.extend(coord);
-//         }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
-//
-//         map.fitBounds(bounds, {
-//             padding: 20
-//         });
-// });
-
-
-// toggleLayer(['World points'], 'World points');
-// toggleLayer(['World markers'], 'World markers');
-// toggleLayer(['World choropleth'], 'World choropleth');
-// // toggleLayer(['aero_1', 'aero_1_1', 'aero_2', 'aero_2_2','aero_3', 'aero_3_3','aero_4', 'aero_4_4',], 'Сhoropleth1');
-//
-// function toggleLayer(ids, name) {
-//     var link = document.createElement('a');
-//     link.href = '#';
-//     link.className = 'active';
-//     link.textContent = name;
-//
-//     link.onclick = function (e) {
-//         e.preventDefault();
-//         e.stopPropagation();
-//         for (layers in ids){
-//             var visibility = map.getLayoutProperty(ids[layers], 'visibility');
-//
-//             if (visibility === 'visible') {
-//                 map.setLayoutProperty(ids[layers], 'visibility', 'none');
-//                 this.className = '';
-//
-//             } else {
-//                 this.className = 'active';
-//                 map.setLayoutProperty(ids[layers], 'visibility', 'visible');
-//
-//             }
-//          }
-//
-//     };
-//
-//     var layers = document.getElementById('menu');
-//     layers.appendChild(link);
-// }
-//
-// ;
+//     var features1 = map.queryRenderedFeatures(e.point, { layers: ['Local points'] });
+//     console.log(features1);
+//     }
+// );
