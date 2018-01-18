@@ -85,11 +85,11 @@ map.on('load', function () {
       'fill-color': {
         property: 'ptal_score',
         stops: [
-          [1, '#F9F8EB'],
-          [2, '#7A9EB1'],
-          [3, '#415865'],
-          [4, '#F9F8EB'],
-          [5, '#7A9EB1']
+          [2, '#616389'],
+          [3, '#B46486'],
+          [4, '#FD6B78'],
+          [5, '#FD846F'],
+          [6, '#FC9168']
         ]
       },
       'fill-outline-color': '#FFFFFF',
@@ -200,13 +200,13 @@ map.on('load', function () {
       'circle-radius': {
         'stops': [[5, 1], [22, 8]]
       },
-      'circle-color': '#ff3333',
+      'circle-color': '#B46486',
       'circle-opacity': 1,
       'circle-stroke-width': {
         'stops': [[5, 0.1], [22, 3]]
       },
       'circle-stroke-color': '#FFFFFF',
-      'circle-stroke-opacity': 0.65
+      'circle-stroke-opacity': 0.75
     }
   });
 
