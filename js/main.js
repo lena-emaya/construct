@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibW9zY293Y2l0eW1hcCIsImEiOiJjajc3ZnQ1aGUxem41MzNudXU3MnBnZDA2In0.akDBtVzE-R3FgVs64ObGLg';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/moscowcitymap/cjcrjme6167rn2sqsp4y7ubgd',
+  style: 'mapbox://styles/moscowcitymap/cjd00ol1t13qt2rlc16yit2zu',
   zoom: 13,
   center: [37.560147, 55.745279]
 });
@@ -68,8 +68,9 @@ map.on('load', function () {
       "line-cap": "round"
     },
     'paint': {
-      "line-color": "#F52677",
-      "line-width": 1.3
+      "line-color": "#BF1E6B",
+      "line-width": 1.3,
+      "line-blur": 0.3
     }
   });
 
