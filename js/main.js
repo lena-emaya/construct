@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibW9zY293Y2l0eW1hcCIsImEiOiJjajc3ZnQ1aGUxem41MzNudXU3MnBnZDA2In0.akDBtVzE-R3FgVs64ObGLg';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/moscowcitymap/cjd00ol1t13qt2rlc16yit2zu',
+  style: 'mapbox://styles/yaconstruct/cj3ldey9x000k2sp7xv3n5pez',
   zoom: 13,
   center: [37.560147, 55.745279]
 });
